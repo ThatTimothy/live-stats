@@ -4,9 +4,9 @@ on:
   # Triggers the workflow on push events
   push:
   
-  # Triggers every 5 minutes
+  # Triggers every half hour (in case action fails)
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/30 * * * *"
    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
