@@ -12,7 +12,6 @@ on:
   workflow_dispatch:
 concurrency: 
   group: update-data
-  cancel-in-progress: true
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -32,5 +31,5 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "Update Data"
-          git pull --allow-unrelated-histories
-          git push
+          git pull --allow-unrelated-histories --rebase
+          git push -f
