@@ -20,19 +20,20 @@ jobs:
         with:
           options: "options.json"
       
-      - name: Commit changes
+      - name: Configure git
         run: |
           git config user.name Data_Updater
           git config user.email github-actions@github.com
-          git add .
           git commit -m "`date -u +'%H:%M:%S %Y-%m-%d'`"
       
-      - name: Pull new changes (if we can)
+      - name: Pull new changes, autostash current ones
         run: |
-          git pull
+          git pull --rebase --autostash
       
       - name: Push changes
         run: |
+          git add .
+          git commit -m "`date -u +'%H:%M:%S %Y-%m-%d'`"
           git push
           
       - name: Start next action
