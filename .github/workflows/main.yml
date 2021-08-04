@@ -24,7 +24,6 @@ jobs:
         run: |
           git config user.name Data_Updater
           git config user.email github-actions@github.com
-          git commit -m "`date -u +'%H:%M:%S %Y-%m-%d'`"
       
       - name: Pull new changes, autostash current ones
         run: |
